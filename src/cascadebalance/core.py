@@ -29,8 +29,9 @@ def calendar(config, dense=False):
                 low.append(quota)
                 high.append(np.inf)
     if dense:
-        result = np.ones((mixes, users, ticks), dtype=int)
-        if users > capacity:
+        slots_per_pair = int(np.ceil(quota / gap))
+        result = np.full((mixes, users, ticks), slots_per_pair, dtype=int)
+        if users * slots_per_pair > capacity:
             raise ValueError("Dense calendar exceeds public node capacity")
         return result
     objective = 1 + np.arange(size) * 1e-8
