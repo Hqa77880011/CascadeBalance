@@ -73,3 +73,15 @@ python -m cascadebalance.statistics --records runs/main/sparse_public/records.js
 ```
 
 Supply --reference with a matched record file for paired differences. Resampling uses independent case IDs, or explicit cluster IDs when provided. Repeated observations from one source unit must share cluster. Zero-event bounds refer to an event in an independent cluster.
+
+## Fixed reproduction setting
+
+Ideal opaque cells: 2 mixes x 2 users, 16-tick cyclic calendar, four epochs, capacity2, gap4/quota1, 512-byte cells. Independent train/validation/test episodes (seeds11/17/29) fit a held-out attacker for each registered defense.
+
+The checked-in entry point fixes data seeds, methods, budgets and output paths. Inspect its commands without starting any computation:
+
+```bash
+python reproduce.py --plan
+```
+
+Remove `--plan` to execute the registered pipeline in a fresh output directory. The entry point calls the existing implementation; it does not insert paper results. Installation uses the package instructions above.
